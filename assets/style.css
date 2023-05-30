@@ -1,0 +1,32 @@
+:root {
+
+}
+.main-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.first-column {
+    width:30%;
+    padding:20px;
+}
+.forecast-container{
+    width:100%;
+}
+.current-display{
+    border: 1px solid #333;
+}
+.curr-title{
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+.main-weather {
+    display: flex;
+    flex-direction: row;
+}
+
+
+{
+    padding-top: 20px;
+}
