@@ -1,6 +1,9 @@
 :root {
 
 }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
 .main-container {
     display: flex;
     flex-direction: row;
@@ -15,7 +18,9 @@
 }
 .current-display{
     border: 1px solid #333;
+    padding: 0 10px;
 }
+
 .curr-title{
     display: flex;
     flex-direction: row;
