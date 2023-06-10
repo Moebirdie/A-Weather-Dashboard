@@ -19,7 +19,6 @@ function getStateString(state) {
 }
 
 function searchLocation() {
-    removeAllWeatherInfo();
     var cityInput = document.getElementById("locationCity");
     var cityVal = cityInput.value;
     var cityEncodedVal = encodeURIComponent(cityVal);
@@ -34,16 +33,37 @@ function searchLocation() {
     valueToFetchCoord = `${cityToFetch}${stateString}${countryValue}`
     console.log(cityEncodedVal, countryValue, valueToFetchCoord);
     localStorage.setItem(cityVal,valueToFetchCoord);
-
+    createPage();
     getWeather(valueToFetchCoord);
+    cityInput.value = "";
+    stateInput.value = "";
+    countryInput.value = "";
+}
+function createPage() {
+    removeAllWeatherInfo();
     setForecastHeading();
+    makeHistoryButtons();
 }
 
-function getHistory() {
-    var city = get
-    localStorage.getItem(city);
-    getWeather(historyItem);
-}
+function makeHistoryButtons() {
+    var inputs = Object.keys(localStorage);
+    var cities = {};
+    for (i=0; i < inputs.length; i++) {
+        var input = inputs[i];
+        var value = localStorage.getItem(input);
+        cities[inputs] = value;
+        var historyButtons = document.getElementById('historyButtons');
+        var historyBtn = document.createElement('button');
+        historyBtn.textContent = input;
+        historyButtons.appendChild(historyBtn);
+        historyBtn.setAttribute("class","history-btn");
+        historyBtn.setAttribute("data-input",input);
+    }
+    console.log(inputs,input, value[i])
+ }
+ function clearInputs() {
+    var clearCity = document.get
+ }
 
 const apiKey = 'c65a83f1b41423a44ca059c4924fe1cd';
 
@@ -229,6 +249,21 @@ function removeAllWeatherInfo() {
        }
     }
  }     
- 
+
+var historyButtons = document.querySelector('.history-buttons');
+historyButtons.addEventListener("click",function(event) {
+    var selectedButton = event.target;
+    const selectedCity = selectedButton.getAttribute("data-input");
+    const selectedValue = localStorage.getItem(selectedCity);
+    createPage();
+    getWeather(selectedValue);
+
+})
+
+
+
 // Search button
 document.getElementById("searchLocation").addEventListener("click", searchLocation);
+
+
+

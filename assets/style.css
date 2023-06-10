@@ -82,7 +82,7 @@ button#searchLocation {
 }
 .currentWeatherDiv {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
 }
 .currentWeatherDiv h1 {
     font-size: 40px;
@@ -95,4 +95,22 @@ button#searchLocation {
 }
 #five-day-heading {
     padding: 20px 20px 0px 20px;
+}
+.history-buttons{
+    display: flex;
+    flex-direction: column;
+}
+.history-btn {
+    width: 100%;
+    color: #161616;
+    background-color: var(--darkBrown);
+    padding: 10px 16px;
+    margin: 2px 0;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid var(--lightBrown);
+}
+.history-btn:hover {
+    background-color: var(--lightOlive);
 }
