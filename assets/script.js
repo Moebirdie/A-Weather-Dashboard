@@ -32,7 +32,7 @@ function searchLocation() {
 
     valueToFetchCoord = `${cityToFetch}${stateString}${countryValue}`
     console.log(cityEncodedVal, countryValue, valueToFetchCoord);
-    localStorage.setItem(cityVal,valueToFetchCoord);
+    localStorage.setItem(cityVal, valueToFetchCoord);
     createPage();
     getWeather(valueToFetchCoord);
     cityInput.value = "";
@@ -48,7 +48,7 @@ function createPage() {
 function makeHistoryButtons() {
     var inputs = Object.keys(localStorage);
     var cities = {};
-    for (i=0; i < inputs.length; i++) {
+    for (i = 0; i < inputs.length; i++) {
         var input = inputs[i];
         var value = localStorage.getItem(input);
         cities[inputs] = value;
@@ -56,14 +56,14 @@ function makeHistoryButtons() {
         var historyBtn = document.createElement('button');
         historyBtn.textContent = input;
         historyButtons.appendChild(historyBtn);
-        historyBtn.setAttribute("class","history-btn");
-        historyBtn.setAttribute("data-input",input);
+        historyBtn.setAttribute("class", "history-btn");
+        historyBtn.setAttribute("data-input", input);
     }
-    console.log(inputs,input, value[i])
- }
- function clearInputs() {
+    console.log(inputs, input, value[i])
+}
+function clearInputs() {
     var clearCity = document.get
- }
+}
 
 const apiKey = 'c65a83f1b41423a44ca059c4924fe1cd';
 
@@ -83,7 +83,7 @@ async function getWeather(valueToFetchCoord) {
             currentWeather = data;
             createCurrentWeatherDiv();
             getFiveDayForecast(lat, lon);
-       })
+        })
         .catch(error => console.log(error));
 }
 
@@ -94,14 +94,14 @@ function setForecastHeading() {
     fiveDayHeading.appendChild(cardDivMainTitleEl);
 }
 
-  async function getFiveDayForecast(lat, lon) {
-        await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
-            .then(response => response.json())
-            .then(data => {
-                forecastData = data;
-                getWeatherDays();
-            })
-    }
+async function getFiveDayForecast(lat, lon) {
+    await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
+        .then(response => response.json())
+        .then(data => {
+            forecastData = data;
+            getWeatherDays();
+        })
+}
 
 function getWeatherDays() {
     var forecastObj = forecastData.list;
@@ -166,7 +166,7 @@ function createCurrentWeatherDiv() {
 function makeForecastCards() {
     var forecastCard = document.getElementById('forecast-cards');
     for (i = 0; i < forecastDays.length; i++) {
-        var forecastDate = dayjs(((forecastDays[i].dt)-14400) * 1000).format('MM/DD/YYYY'); //9pm date-time second upd +1 day(86400)- 20 hrs(72000) - 4 hrs utc adj(14400)
+        var forecastDate = dayjs(((forecastDays[i].dt) - 14400) * 1000).format('MM/DD/YYYY'); //9pm date-time second upd +1 day(86400)- 20 hrs(72000) - 4 hrs utc adj(14400)
         var forecastIcon = forecastDays[i].weather[0].icon;
         var forecastDesc = forecastDays[i].weather[0].description;
         var forecastHumidity = forecastDays[i].main.humidity;
@@ -198,27 +198,27 @@ function makeForecastCards() {
         forecastCard.append(forecastDivEl);
 
         forecastDivEl.setAttribute("class", "card");
-        
+
         if (forecastDesc.includes('rain')) {
             forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newdrizzle.jpg')");
         }
         else if (forecastDesc.includes('snow')) {
-            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newsnow.png')"); 
+            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newsnow.png')");
         }
         else if (forecastDesc.includes('thunderstorm')) {
-            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newthunder.png')"); 
+            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newthunder.png')");
         }
         else if (forecastDesc.includes('drizzle')) {
-            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newdrizzle.jpg')"); 
+            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newdrizzle.jpg')");
         }
         else if (forecastDesc.includes('clouds')) {
-            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newcloudy1.jpg')"); 
+            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newcloudy1.jpg')");
         }
         else if (forecastDesc.includes('sunny')) {
-            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newsunny.jpg')"); 
+            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newsunny.jpg')");
         }
         else {
-            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newsunny.jpg')"); 
+            forecastDivEl.setAttribute("style", "background-image:url('./assets/images/newsunny.jpg')");
         }
     }
 }
@@ -228,45 +228,45 @@ function removeAllWeatherInfo() {
     var currentDisplay = document.getElementById('current-display');
     var displayChildren = currentDisplay.children;
     if (displayChildren === null) {
-    console.log("no data to clear");
+        console.log("no data to clear");
     } else {
-    while (displayChildren.length > 0 ) {
-        currentDisplay.removeChild(displayChildren[0]);
-       }
+        while (displayChildren.length > 0) {
+            currentDisplay.removeChild(displayChildren[0]);
+        }
     }
     var fiveDayHead = document.getElementById('five-day-heading');
     var fiveDayChildren = fiveDayHead.children;
     if (fiveDayChildren === null) {
-    console.log("no data to clear");
+        console.log("no data to clear");
     } else {
-    while (fiveDayChildren.length > 0 ) {
-        fiveDayHead.removeChild(fiveDayChildren[0]);
-       }
+        while (fiveDayChildren.length > 0) {
+            fiveDayHead.removeChild(fiveDayChildren[0]);
+        }
     }
     var foreCastCards = document.getElementById('forecast-cards');
     var forecastChildren = foreCastCards.children;
     if (forecastChildren === null) {
-    console.log("no data to clear");
+        console.log("no data to clear");
     } else {
-    while (forecastChildren.length > 0 ) {
-        foreCastCards.removeChild(forecastChildren[0]);
-       }
+        while (forecastChildren.length > 0) {
+            foreCastCards.removeChild(forecastChildren[0]);
+        }
     }
- } 
- function removeHistoryButtons() {
+}
+function removeHistoryButtons() {
     var allHistoryButtons = document.querySelector('.history-buttons');
     var historyChildren = allHistoryButtons.children
     if (historyChildren === null) {
         console.log("no data to clear");
-        } else {
-        while (historyChildren.length > 0 ) {
+    } else {
+        while (historyChildren.length > 0) {
             allHistoryButtons.removeChild(historyChildren[0]);
-           }
         }
- }    
+    }
+}
 
 var historyButtons = document.querySelector('.history-buttons');
-historyButtons.addEventListener("click",function(event) {
+historyButtons.addEventListener("click", function (event) {
     var selectedButton = event.target;
     const selectedCity = selectedButton.getAttribute("data-input");
     const selectedValue = localStorage.getItem(selectedCity);
@@ -275,10 +275,14 @@ historyButtons.addEventListener("click",function(event) {
     getWeather(selectedValue);
 })
 
-
+function clearSearches() {
+    localStorage.clear();
+    location.reload();
+}
 
 // Search button
 document.getElementById("searchLocation").addEventListener("click", searchLocation);
+document.getElementById("clearSearches").addEventListener("click", clearSearches);
 
 
 
