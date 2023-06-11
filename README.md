@@ -7,6 +7,25 @@ Weather Dashboard is a browser based application that can be accessed by navigat
 ## Usage
 When the user navigates to the Weather Dashboard, they are presented with three search inputs and a search button.  Upon entering a value into the city input, (state and country are optional) and pressing the search button the user is presented with the following:
   - The searched city name and date display at the top of the screen
-  - The temperature is prominently displayed
-  - The wind speed and humidity is also displayed in the current weather location
-  - Below the current weather, the five day forecast is displaed  
+  - The temperature is prominently displayed along with an icon depicting current weather conditions
+  - The wind speed and humidity is also displayed in the current weather section
+
+  - Below the current weather, the five day forecast is displayed
+  - The five day forecast is displayed on individual cards with a background reflecting the forecasted weather
+  - The card contains the following information:
+      - Date
+      - Temperature
+      - Related icon
+      - Wind speed
+      - Humidity
+      - Short description
+
+    - Once search has been pressed for the first time, a history of all previous searches displays and persists until the page is refreshed
+    - New historical searches are added with each press of the search button
+    - Historical buttons can be pressed to return the weather from that specific previous search
+
+    - A clear previous history button has been added to clear all of the search history
+
+## Visual Description
+
+Navigate to the Weather Dashboard
