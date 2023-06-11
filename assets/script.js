@@ -136,6 +136,7 @@ function createCurrentWeatherDiv() {
     var currWeatherStats = document.createElement('div');
     var currWindEl = document.createElement('p');
     var currHumidityEl = document.createElement('p');
+    var currWeatherIcon = document.createElement('img');
 
     var currentTitleData = `${currentWeather.name} (${currDateDisplay})`;
     var currentTempData = `${currTempCalc}\u00B0F`;
@@ -149,6 +150,7 @@ function createCurrentWeatherDiv() {
 
     currDisplay.appendChild(currTitleEl);
     currTempDiv.appendChild(currTempEl);
+    currWeatherStats.appendChild(currWeatherIcon);
     currWeatherStats.appendChild(currWindEl);
     currWeatherStats.appendChild(currHumidityEl);
     currWeatherDiv.appendChild(currTempDiv);
@@ -156,7 +158,8 @@ function createCurrentWeatherDiv() {
     currDisplay.appendChild(currWeatherDiv);
 
     currDisplay.setAttribute("class", "current-display");
-    currWeatherDiv.setAttribute("class", "currentWeatherDiv")
+    currWeatherDiv.setAttribute("class", "currentWeatherDiv");
+    currWeatherIcon.setAttribute("src", `http://openweathermap.org/img/w/${currentWeather.weather[0].icon}.png`);
 
 }
 
