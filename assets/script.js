@@ -221,6 +221,7 @@ function makeForecastCards() {
 }
 
 function removeAllWeatherInfo() {
+    removeHistoryButtons();
     var currentDisplay = document.getElementById('current-display');
     var displayChildren = currentDisplay.children;
     if (displayChildren === null) {
@@ -248,16 +249,27 @@ function removeAllWeatherInfo() {
         foreCastCards.removeChild(forecastChildren[0]);
        }
     }
- }     
+ } 
+ function removeHistoryButtons() {
+    var allHistoryButtons = document.querySelector('.history-buttons');
+    var historyChildren = allHistoryButtons.children
+    if (historyChildren === null) {
+        console.log("no data to clear");
+        } else {
+        while (historyChildren.length > 0 ) {
+            allHistoryButtons.removeChild(historyChildren[0]);
+           }
+        }
+ }    
 
 var historyButtons = document.querySelector('.history-buttons');
 historyButtons.addEventListener("click",function(event) {
     var selectedButton = event.target;
     const selectedCity = selectedButton.getAttribute("data-input");
     const selectedValue = localStorage.getItem(selectedCity);
+    removeHistoryButtons();
     createPage();
     getWeather(selectedValue);
-
 })
 
 
