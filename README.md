@@ -1,7 +1,7 @@
 # Weather Dashboard
 Weather Dashboard is designed to demonstrate knowledge of using a third party API.  This project uses the OpenWeatherMap API, a robust weather API providing various API calls to obtain both geolocation and weather forecasts.  This API also integrates with Leaflet.js and other mapping libraries.  This can be seen in the 'Oh My Stars' project, a collaborative class project, in my porfolio. (My Portfolio) Nested variables included in OpenWeatherMap API responses encourage use of additional javascript skills. This project also utilizes local storage to maintain a history of previous searches.  This particular version of the Weather Dashboard includes the ability to include a state and country in the search criteria.  This allows the user to specify a state for cities such as Portland which can refer to both Portland, Oregon or Portland, Maine.  The ability to enter a country also helps specify the location for cities such as Lima which exists in both Peru and Ohio. 
 
-The live version of this application can be seen at: https://moebirdie.github.io/A-Weather-Dashboard/
+The live version of this application can be seen at: https://moebirdie.github.io/A-Weather-Dashboard/  
 The Github respository can be found at: https://github.com/Moebirdie/A-Weather-Dashboard
 
 
@@ -46,7 +46,7 @@ When the user navigates to the Weather Dashboard, they are presented with three 
 
 
 ## Additional Notes
-This Weather Dashboard was completed after the "Oh My Stars" project. I wrote the code for retrieving and displaying the weather in the "Oh My Stars" application, so you will see similaries between the two code bases. 
+This Weather Dashboard was completed after the "Oh My Stars" project. I wrote the code for retrieving and displaying the weather in the "Oh My Stars" application, so you will see some similaries in the weather functions. 
 
 
 ## License
